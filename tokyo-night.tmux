@@ -51,6 +51,7 @@ zoom_number="#($SCRIPTS_PATH/custom-number.sh #P $zoom_id_style)"
 date_and_time="$($SCRIPTS_PATH/datetime-widget.sh)"
 current_path="#($SCRIPTS_PATH/path-widget.sh #{pane_current_path})"
 battery_status="#($SCRIPTS_PATH/battery-widget.sh)"
+pomodoro_timer="#($HOME/.config/tmux/plugins/tmux-pomodoro-plus/pomodoro.tmux)"
 
 #+--- Bars LEFT ---+
 # Session name
@@ -63,6 +64,6 @@ tmux set -g window-status-current-format "$RESET#[fg=${THEME[green]},bg=${THEME[
 tmux set -g window-status-format "$RESET#[fg=${THEME[foreground]}] #{?#{==:#{pane_current_command},ssh},󰣀 , }${RESET}$window_number#W#[nobold,dim]#{?window_zoomed_flag, $zoom_number, $custom_pane}#[fg=${THEME[yellow]}]#{?window_last_flag,󰁯  , }"
 
 #+--- Bars RIGHT ---+
-tmux set -g status-right "$battery_status$current_path$cmus_status$netspeed$git_status$wb_git_status$date_and_time #[fg=${THEME[blue]},bg=${THEME[background]},bold] #[fg=${THEME[bblack]},bg=${THEME[blue]},bold] #S #{?client_prefix,󰠠 ,#[dim]󰤂 }#[bold,nodim]"
+tmux set -g status-right "$wb_git_status$git_status$current_path$cmus_status$netspeed$date_and_time$battery_status #[fg=${THEME[blue]},bg=${THEME[background]},bold] #[fg=${THEME[bblack]},bg=${THEME[blue]},bold] #S #{?client_prefix,󰠠 ,#[dim]󰤂 }#[bold,nodim]$pomodoro_timer"
 
 tmux set -g window-status-separator ""
